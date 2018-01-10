@@ -45,9 +45,7 @@ class Receiver extends Component {
 
     this.setState({ dragLevel });
 
-    if (!this.props.isOpen) {
-      this.props.onDragEnter(e);
-    }
+    this.props.onDragEnter(e);
   }
 
   onDragLeave(e) {
