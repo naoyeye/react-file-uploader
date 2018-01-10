@@ -35,11 +35,11 @@ class UploadHandler extends Component {
   }
 
   render() {
-    const { component, key, customClass, style } = this.props;
+    const { component, componentKey, customClass, style } = this.props;
 
     return React.createElement(
       component,
-      { key, className: classNames(customClass), style },
+      { key: componentKey, className: classNames(customClass), style },
       this.props.children
     );
   }
@@ -57,7 +57,7 @@ UploadHandler.propTypes = {
     PropTypes.arrayOf(PropTypes.string),
   ]),
   file: PropTypes.object.isRequired,
-  key: PropTypes.string,
+  componentKey: PropTypes.string,
   style: PropTypes.object,
   upload: PropTypes.func,
 };
