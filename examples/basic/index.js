@@ -2,12 +2,15 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 var multiparty = require('connect-multiparty')();
-var html = fs.readFileSync('index.html').toString();
 
-app.use(express.static(__dirname));
+app.disable('x-powered-by');
+app.use(express.static('./'));
+app.set('view engine', 'html');
 
 app.get('/', function(req, res) {
-    res.send(html);
+  res.sendFile('./index.html', {
+     root: '.'
+   });
 });
 
 app.post('/upload', multiparty, function(req, res) {
@@ -21,6 +24,6 @@ app.post('/upload', multiparty, function(req, res) {
     });
 });
 
-app.listen(3117, function(err) {
-    console.log('app is started at port 3117');
+app.listen(8302, function(err) {
+    console.log('app is started at port 8302');
 });
